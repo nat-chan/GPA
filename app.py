@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+from waitress import serve
 
 app = dash.Dash()
 app.layout = html.Div([
@@ -84,4 +85,6 @@ def update_output_figure(value):
     return plot(credit, gpa)
 
 if __name__ == '__main__':
-    app.run_server()
+#    app.run_server()
+#    serve(app.server, host='0.0.0.0', port=443, url_scheme='https')
+    serve(app.server, host='0.0.0.0', port=80)
